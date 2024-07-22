@@ -1,0 +1,68 @@
+.customSelect select {
+    padding-right: 1.25rem;
+    min-height: inherit;
+    line-height: normal;
+    height: 1.4rem;
+}
+.customSelect label {
+    margin-top: 0.1rem;
+}
+.customSelect .slds-select_container::before {
+    border-bottom: 0;
+}
+.customInput {
+    width: 3rem;
+    height: 1.4rem;
+    text-align: center;
+    border: 1px solid #dddbda;
+    border-radius: 3px;
+    background-color: #fff;
+}
+.slds-table_fixed-layout {
+    table-layout: fixed;
+    width: 100%;
+    height: 200px;
+}
+ 
+/* Make the first column sticky */
+.sticky {
+    position: sticky;
+    left: 0;
+    background-color: #f3f2f2;
+    z-index: 1;
+    box-shadow: 2px 0 5px -2px rgba(0, 0, 0, 0.3);
+}
+.table-scroller{
+    height: 100%;
+    max-height: 200Px;
+    overflow: auto;
+}
+.datatable-container {
+    height: 200px; /* Adjust height as needed */
+    overflow: auto;
+}
+ 
+/* Fix the header row at the top */
+.datatable-container .slds-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+}
+ 
+/* Ensure body scrolls underneath the fixed header */
+.datatable-container .slds-table tbody {
+    display: block;
+    height: calc(100% - 2.5rem); /* Adjust based on header height */
+    overflow: auto;
+}
+ 
+.disabled-row {
+    pointer-events: none;
+    background-color: #f5f5f5; /* Light gray background */
+    color: #999; /* Gray text */
+}
+ 
+.disabled-row .slds-checkbox {
+    display: none;
+}
