@@ -134,25 +134,8 @@ export default class GenericDataTableComp extends LightningElement {
         this.deleteSelectedRow(event.detail.row);
     }
  
-    // disableRow(data) {
-    //     this._recordsToDisplay = data.map(row => {
-    //         let newRow = { ...row };
-    //         if (newRow.hasOwnProperty('isEligible') && newRow.isEligible === 'false') {
-    //             console.log('$$$ Inside  newRow.customClass');
-    //             newRow.customClass = 'disabled-row';
-    //         }
-    //         return newRow;
-    //     });
-    // }
- 
-    // getRowClassName(row) {
-    //     console.log('$$$ Inside  newRow.customClass');
-    //     return row.customClass;
-    // }
- 
     handleRowSelection(event) {
         let checked = event.detail.config.checked;
-        console.log('$$$ checked :' + JSON.stringify(event.detail));
         switch (event.detail.config.action) {
             case 'selectAllRows':
                 for (let i = 0; i < event.detail.selectedRows.length; i++) {
@@ -173,18 +156,6 @@ export default class GenericDataTableComp extends LightningElement {
             default:
                 break;
         }
-        // if (checked){
-        //     console.log('$$$ inside checked :' + checked);
-        //     this._currentSelectedRows = [...this._currentSelectedRows];
-        //     console.log('$$$ _currentSelectedRows :' + this._currentSelectedRows);
-        //     event.detail.selectedRows.reduce((accumulator, currentValue) => {
-        //         if (currentValue.uid) {
-        //             this._currentSelectedRows.push(currentValue.uid);
-        //         }
-        //     }, true);
-        // }
-        // console.log('$$$ selectedRows :' + event.detail.selectedRows);
- 
         this.dispatchEvent(new CustomEvent("rowselectioncomplete", {
             detail: {
                 type: "RowSelectionComplete",
@@ -290,11 +261,6 @@ export default class GenericDataTableComp extends LightningElement {
         for (let i = (this._pageNumber - 1) * this._pageSize; i < this._pageNumber * this._pageSize;i++) {
             if (i === this._totalRecords) break;
             this._recordsToDisplay.push(this._data[i]);
-            /*this._preSelectedRows.forEach(element => {
-                if (this._data[i].uid === element) {
-                    this._currentSelectedRows.push(this._data[i].uid);
-                }
-            });*/
         }
         this.handlePaginatorChange(new CustomEvent("paginatorchange", {detail:this._recordsToDisplay}));
     }
